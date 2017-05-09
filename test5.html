@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+		background:#000; 
+		text-align:center;
+		}
+		#c1 {
+			width: 800px;
+			height: 600px;
+			background: #fff;
+		}
+	</style>
+	<script>
+	window.onload = function () {
+		let oC = document.getElementById('c1');
+		let gd = oC.getContext('2d');
+
+		let ang = 0;
+
+		setInterval(function () {
+			gd.clearRect(0,0,oC.width, oC.height);
+
+			ang++;
+
+			gd.save();
+			gd.translate(250,200);
+			gd.rotate(ang*Math.PI/180);
+
+			gd.strokeRect(-150, -100, 300, 200);
+			gd.restore();
+		}, 16);
+
+	};
+	</script>
+</head>
+
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	window.onload = function () {
+		let oC = document.getElementById('c1');
+		let gd = oC.getContext('2d');
+
+		gd.strokeRect(100,100,300,200);
+
+		oC.onmousemove = function (ev) {
+			let x = ev.pageX - oC.offsetLeft;
+			let y = ev.pageY - oC.offsetTop;
+
+			let l = 100;
+			let r= 100+300;
+			let t = 100;
+			let b = 100+200;
+
+			//横向  l<=x<=r
+			//纵向 t<=y<=b
+
+			if(l<=x && x<=r && t<=y && y<=b){
+				gd.clearRect(0,0,oC.width,oC.height);
+
+				gd.strokeStyle='red';
+				gd.strokeRect(100, 100, 300, 200);
+			} else {
+				gd.clearRect(0,0,oC.width,oC.height);
+
+				gd.strokeStyle='black';
+				gd.strokeRect(100, 100, 300, 200);
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
